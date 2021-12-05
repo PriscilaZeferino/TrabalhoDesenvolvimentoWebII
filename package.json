@@ -9,5 +9,23 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.4.3",
+    "morgan": "^1.10.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "session": "^0.1.0"
+  }
 }
