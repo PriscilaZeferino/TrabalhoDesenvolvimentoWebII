@@ -1,6 +1,8 @@
+const { ObjectId } = require('bson');
 const mongoose = require('mongoose')
 
 const metalivroSchema = new mongoose.Schema({
+    userId: {type: ObjectId},
     title: {type: String, required: true},
     description: {type: String},
     total_pages: {type: Number, required: true},

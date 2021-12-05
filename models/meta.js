@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const metaSchema = new mongoose.Schema({
+    userId: {type: ObjectId},
     title: {type: String, required: true},
     description: {type: String},
     total_books: {type: Number, required: true},
