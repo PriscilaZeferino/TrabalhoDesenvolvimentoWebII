@@ -1,0 +1,148 @@
+:root {
+    --primary-color: #fff;
+    --secondary-color: #BB0C0C;
+
+    --primary-color-hover: #f3f3f3;
+    --secondary-color-hover: #991c1c;
+
+    --background-color-form: #F6F6F6;
+    --background-color-form-placeholder: ##A9A9A9;
+    --background-color-form-text: #000;
+
+    --status-in-progress: #5353BF;
+    --status-progress-late: #BB0C0C;
+    --status-progress-finished: #1F9515;
+
+    --primary-font: 'Reem Kufi', sans-serif;
+    --secondary-font: 'Jost', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),  url('../bookshelf.jpeg');
+    background-size: cover;
+}
+
+.container, footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto; 
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 60px;  
+    margin-right: 60px;   
+    list-style: none; 
+}
+
+nav ul li span {
+    padding-top: 60px;
+}
+
+nav p {
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+
+
+nav span a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border: 5px solid;
+
+    padding: 5px 30px 5px 30px;
+    margin-right: 10px;
+
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+nav span a:hover {
+    background-color: var(--secondary-color-hover);
+    color: var(--primary-color);
+}
+
+nav span #register:hover {
+    background-color: var(--primary-color-hover);
+    color: var(--secondary-color);
+}
+
+nav span #register {
+    background: var(--secondary-color);
+    border: 5px solid var(--secondary-color);
+}
+
+.form form {
+    background-color: var(--background-color-form);
+    color: var(--background-color-form-text);
+   
+    padding-top: 10px;
+
+    width: 575px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form form h2 {
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 60px;
+    text-transform: uppercase;
+
+    color: var(--secondary-color);
+
+}
+
+.form input , .form h2 {
+    margin-left: 65px;
+    margin-right: 65px;
+}
+
+.form input {
+    width: auto;
+    height: auto;
+    margin-bottom: 50px;
+
+    padding: 20px;
+    
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 20px;
+    border: none;
+    color: var(--background-color-form-placeholder);
+}
+
+
+.form input#btn-login {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+
+    font-family: var(--primary-font);
+    font-weight: 500;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.form input#btn-login:hover {
+    background-color: var(--secondary-color-hover);
+    color: var(--primary-color);
+}
+
+footer {
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
