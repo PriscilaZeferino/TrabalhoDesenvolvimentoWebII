@@ -4,6 +4,7 @@ const session = require('express-session')
 const path = require('path')
 const cookieparser = require('cookie-parser')
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 
 const app = express()
 app.use(
@@ -30,11 +31,19 @@ mongoose.connect("mongodb://localhost:27017/dbTrabalho", {useNewUrlParser: true,
     .catch(err => {console.log("Erro ao conectar com o banco:" + err);
 });
 
-const rotasVisitante = require('./routes/routesVisitante')
-app.use(rotasVisitante)
+// const rotasVisitante = require('./routes/routesVisitante')
+// app.use(rotasVisitante)
 
 const rotasUsuario = require('./routes/routesUsuario')
 app.use(rotasUsuario)
+
+app.get('*', (req, res) => 
+{
+    res.statusCode = 404;
+    res.write("<p> 404 Not Found </p>");
+    res.write('<p>Clique <a href="/"> aqui </a> para voltar a pagina inicial');
+    res.end();
+});
 
 app.listen(3000, () => {
     console.log("Servidor ligado na porta 3000!");
