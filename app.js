@@ -23,6 +23,9 @@ app.use(
     }
 ));
 
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 const bodyparser = require('body-parser')
 app.use(express.urlencoded({extended: true}))
 app.use(bodyparser.json())
