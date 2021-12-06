@@ -1,0 +1,32 @@
+<%- include('partes/headUser')%>  
+    <%- include('partes/menuUser')%>  
+    <div class="container">
+        <header>
+            <h1 class="title">Editar meta</h1>
+        </header>
+       <section>
+           <form action="#" method="post" class="registerAndEditMeta">
+                <div>
+                    <input type="text" name="text" placeholder="Titulo da meta">
+                </div>
+                <div>
+                    <textarea id="description" name="description" placeholder="Descrição"></textarea>
+                </div>
+                <div class="total_prazo">
+                    <div>
+                        <label for="total">Total de livros</label>
+                        <input type="number" min="1" placeholder="Total de Livros">
+                    </div>
+                    <div>
+                        <label for="prazo">Prazo</label>
+                        <input type="date" placeholder="23/04/2001">
+                    </div>
+                </div>
+                <span class="btn-group">
+                    <p><a class="btn" href="/meta/deletar">Deletar Meta</a></p>
+                    <p><input class="btn" type="submit" value="Cadastrar"/></p>
+                </span>
+           </form>
+       </section>
+    </div>
+<%- include('partes/footer')%>  

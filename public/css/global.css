@@ -1,6 +1,9 @@
 :root {
     --primary-color: #fff;
     --secondary-color: #BB0C0C;
+    --third-color: #000;
+
+    --shadow: rgba(00, 00, 00, 0.10);
 
     --primary-color-hover: #f3f3f3;
     --secondary-color-hover: #991c1c;
@@ -8,6 +11,10 @@
     --background-color-form: #F6F6F6;
     --background-color-form-placeholder: ##A9A9A9;
     --background-color-form-text: #000;
+
+    --input-placeholder: #C1C1C1;
+    --input-border: rgba(97, 97, 97, 0.38);
+
 
     --status-in-progress: #5353BF;
     --status-progress-late: #BB0C0C;
@@ -18,7 +25,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),  url('../bookshelf.jpeg');
+    background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),  url('../bookshelf.jpeg');
     background-size: cover;
 }
 
@@ -28,6 +35,9 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto; 
+
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
 }
 
 nav ul {
@@ -49,8 +59,6 @@ nav p {
     font-size: 30px;
     color: var(--primary-color);
 }
-
-
 
 nav span a {
     color: var(--primary-color);
@@ -80,7 +88,23 @@ nav span #register {
     border: 5px solid var(--secondary-color);
 }
 
-.form form {
+footer p {
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    font-size: 20px;
+
+    text-align: center;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+}
+
+/*PAGINA DE LOGIN E PAGINA DE REGISTRO DE USUÁRIO*/
+
+form.login_register{
     background-color: var(--background-color-form);
     color: var(--background-color-form-text);
    
@@ -93,28 +117,28 @@ nav span #register {
     flex-direction: column;
 }
 
-.form form h2 {
+form.login_register h2,
+form.login_register input {
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-bottom: 50px;
+}
+
+form.login_register h2 {
     font-family: var(--secondary-font);
     font-weight: 700;
     font-size: 60px;
     text-transform: uppercase;
 
     color: var(--secondary-color);
-
 }
 
-.form input , .form h2 {
-    margin-left: 65px;
-    margin-right: 65px;
-}
-
-.form input {
+form.login_register input {
     width: auto;
     height: auto;
-    margin-bottom: 50px;
 
     padding: 20px;
-    
+
     font-family: var(--primary-font);
     font-weight: 400;
     font-size: 20px;
@@ -122,8 +146,7 @@ nav span #register {
     color: var(--background-color-form-placeholder);
 }
 
-
-.form input#btn-login {
+form.login_register #btn-authenticate {
     background-color: var(--secondary-color);
     color: var(--primary-color);
 
@@ -134,15 +157,256 @@ nav span #register {
     text-decoration: none;
 }
 
-.form input#btn-login:hover {
+form.login_register #btn-authenticate:hover {
     background-color: var(--secondary-color-hover);
     color: var(--primary-color);
 }
 
-footer {
-    color: var(--primary-color);
-    font-family: var(--secondary-font);
-    font-weight: 600;
-    font-size: 20px;
-    text-align: center;
+/*PAGINA LISTA DE METAS*/
+.container header, 
+.container section {
+    background-color: var(--primary-color);
+    color: var(--background-color-form-text);
+    width: 900px;
+    height: auto;
 }
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header h1:first-child{
+    font-family: var(--primary-font);
+    font-size: 30px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+header h1 {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--secondary-color);
+}
+
+header h1, header h1 a {
+    padding: 50px;
+    margin: auto;
+}
+
+
+header h1 a {
+    color: var(--third-color);
+    font-size: 20px;
+}
+
+header h1 a:hover {
+    color: var(--secondary-color);
+}
+
+
+section article {
+    width: 680px;
+    margin: auto;
+    box-shadow: 0 0 10px var(--shadow);
+    border-radius: 5px;
+
+    font-family: var(--primary-font);
+    font-weight: 400;
+
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+section article:last-child{
+    margin-bottom: 50px;
+}
+
+section article span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+section article span h1 {
+    font-size: 24px;
+}
+
+section article span h1 a {
+    font-size: 18px;
+    color: var(--third-color);
+}
+
+section article span h1 a:hover {
+    color: var(--secondary-color);
+}
+
+section article p {
+    font-size: 16px;
+    color: var(--third-color);
+}
+
+section article span p {
+    font-size: 18px;
+    color: var(--third-color);
+}
+
+header h1.title {
+    text-transform: none;
+    color: var(--third-color);
+}
+
+section.detalhes span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: justify;
+}
+
+section.detalhes .description, 
+section.detalhes .meta, 
+section.detalhes .status, 
+section.detalhes .prazo {
+    padding-left: 110px;
+    padding-right: 110px;
+    margin: auto;
+}
+
+section.detalhes .description p {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+section.detalhes .meta p {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+section.detalhes .status p {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+section.detalhes .prazo p {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 20px;
+}
+
+section.detalhes .description p, 
+section.detalhes .meta p, 
+section.detalhes .status p, 
+section.detalhes .prazo p{
+    font-size: 18px;
+}
+
+section.detalhes  {
+    padding-bottom: 50px;
+}
+
+section.detalhes .prazo .btn {
+    background-color: var(--primary-color);
+    color: var(--third-color);
+    border: 5px solid var(--third-color);
+
+    font-family: var(--primary-font);
+    font-size: 18px;
+
+    max-width: 230px;
+    max-height: 52px;
+
+    text-decoration: none;
+    padding: 5px;
+} 
+
+section.detalhes .prazo .btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+input[type="text"], 
+input[type="number"], 
+input[type="date"],
+textarea {
+    width: 100%;
+    height: auto;
+}
+
+textarea {
+    resize: none;
+}
+
+.registerAndEditMeta {
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.registerAndEditMeta div input, 
+.registerAndEditMeta div textarea,
+.registerAndEditMeta div label {
+    font-family: var(--primary-font);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.registerAndEditMeta div input, 
+.registerAndEditMeta div textarea {
+    padding: 10px;    
+    margin-bottom: 20px;
+    border: 1px solid var(--input-border);
+}
+
+.registerAndEditMeta div input[type="submit"] {
+    border: 5px solid var(--third-color);
+}
+
+.total_prazo, .btn-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-group {
+    margin-bottom: 40px;
+}
+
+.btn p a, .btn p a:visited{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: var(--third-color);
+    border: 5px solid var(--third-color);
+
+    font-family: var(--primary-font);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.btn-group :first-child a{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: 5px solid var(--secondary-color);
+    padding: 10px;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-group :first-child a:hover{
+    background-color: var(--secondary-color-hover);
+    border: 5px solid var(--secondary-color-hover);
+}
+
