@@ -1,0 +1,38 @@
+<%- include('partes/headUser')%>  
+    <%- include('partes/menuUser')%>  
+    <div class="container">
+        <header>
+            <h1 class="title">Editar Livro</h1>
+            <form class="delete" action="/livro/<%=id%>?_method=DELETE" method="post">
+                <p><input class="btn" name="delete" type="submit" value="Deletar livro"/></p>
+            </form>
+        </header>
+       <section>
+           <form action="/livro/<%=id%>?_method=PATCH" method="post" class="registerAndEditMeta">
+                <div>
+                    <input type="text" name="titulo" placeholder="Titulo do livro *" value="<%=livro.title%>" required>
+                </div>
+                <div>
+                    <textarea id="description" name="description" placeholder="Descrição/Sinopse"><%=livro.description%></textarea>
+                </div>
+                <div class="total_prazo">
+                    <div>
+                        <label for="total_pages">Total de paginas: </label>
+                        <input type="number" min="1" name="total_pages" placeholder="Total de paginas *" value="<%=livro.total_pages%>" required>
+                    </div>
+                    <div>
+                        <label for="author"> Autor: </label>
+                        <input type="text" name="author" placeholder="Author *" value="<%=livro.author%>" required>
+                    </div>
+                </div>
+                <div>
+                    <p>* Campos obrigatórios</p>
+                </div>
+                <div class="btn-group">
+                    <p><input class="btn" type="submit" value="Editar Livro"></p>
+                    <p><a class="btn" href="/">Voltar</a></p>
+                </div>
+           </form>
+       </section>
+    </div>
+<%- include('partes/footer')%>  

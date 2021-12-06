@@ -1,0 +1,35 @@
+<%- include('partes/headUser')%>  
+    <%- include('partes/menuUser')%>  
+    <div class="container">
+        <header>
+            <h1 class="title">Adicionar Novo Livro</h1>
+        </header>
+       <section>
+           <form action="/livro/cadastrar" method="post" class="registerAndEditMeta">
+                <div>
+                    <input type="text" name="titulo" placeholder="Titulo do livro *" required>
+                </div>
+                <div>
+                    <textarea id="description" name="description" placeholder="Descrição/Sinopse"></textarea>
+                </div>
+                <div class="total_prazo">
+                    <div>
+                        <label for="total_pages">Total de paginas: </label>
+                        <input type="number" min="1" name="total_pages" placeholder="Total de paginas *" required>
+                    </div>
+                    <div>
+                        <label for="author"> Autor: </label>
+                        <input type="text" name="author" placeholder="Author *" required>
+                    </div>
+                </div>
+                <div>
+                    <p>* Campos obrigatórios</p>
+                </div>
+                <div class="btn-group">
+                    <p><input class="btn" type="submit" value="Cadastrar Livro"></p>
+                    <p><a class="btn" href="/">Voltar</a></p>
+                </div>
+           </form>
+       </section>
+    </div>
+<%- include('partes/footer')%>  

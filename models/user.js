@@ -10,9 +10,5 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(passportLocalMongoose);
 
-userSchema.method('compare', async (formPass, userPass) => { 
-    return bcrypt.compare(formPass, userPass)
-});
-
 const User = mongoose.model("User", userSchema)
 module.exports = User

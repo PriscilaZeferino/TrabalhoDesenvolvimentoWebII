@@ -1,0 +1,14 @@
+<%- include('partes/headUser')%>  
+    <%- include('partes/menuUser')%>  
+    <div class="container">
+        <header>
+            <h1 class="title">Lista de livros</h1>
+            <h1><a href="/livro/cadastrar">Novo Livro +</a></h1>
+        </header>
+        <section>
+            <% for (livro of livros) { %>
+                <%- include('partes/article_livros')%>  
+            <% } %>
+        </section>
+    </div>
+<%- include('partes/footer')%>  

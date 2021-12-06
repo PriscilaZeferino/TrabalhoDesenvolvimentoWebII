@@ -1,0 +1,16 @@
+<article>
+    <span>            
+        <h1><%=livro.title%></h1>
+        <h1 id="details"><a href="/livro/<%=livro._id%>/detalhes">Ver detalhes</a></h1>
+    </span>
+    <p>
+        <% if (livro.description) {%>
+            <%=livro.description%>
+        <% } %>
+    </p>
+    <span>            
+        <p>Total de paginas: <%=livro.total_pages%></p>
+        <p>Total de paginas lidas: <%=livro.read_pages ? livro.read_pages : 0 %></p>
+    </span>
+</article>
+
