@@ -1,10 +1,11 @@
 <%- include('partes/head')%>  
     <%- include('partes/menuVisit')%>  
         <div class="container">
-            <form action="/login" method="post">
+            <form action="/login" method="post" class="login_register">
+                <p id="msg"><%-msg%></p>
                 <h2>Login</h2>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
                 <input type="submit" value="Logar" id="btn-authenticate">
             </form>
         </div>
