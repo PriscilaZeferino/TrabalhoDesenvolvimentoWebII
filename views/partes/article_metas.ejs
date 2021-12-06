@@ -9,7 +9,7 @@
         <% } %>
     </p>
     <span>            
-        <p>Progresso: <%=meta.read_books%>/<%=meta.total_books%></p>
+        <p>Progresso: <%= Math.round((meta.read_books/meta.total_books)*100)%>%</p>
         <% if (meta.read_books >= meta.total_books) { %>
             <p>Status: concluída</p>
         <% } else { %>
@@ -17,3 +17,4 @@
         <% } %>
     </span>
 </article>
+
