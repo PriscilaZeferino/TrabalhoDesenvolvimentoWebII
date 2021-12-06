@@ -1,16 +1,19 @@
 <article>
     <span>            
-        <h1>Nome da Meta</h1>
-        <h1 id="details"><a href="/meta/detalhes">Ver detalhes</a></h1>
+        <h1><%=meta.title%></h1>
+        <h1 id="details"><a href="/meta/<%=meta._id%>/detalhes">Ver detalhes</a></h1>
     </span>
     <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        In enim rerum veniam. Harum iste earum nam, animi quis atque, 
-        debitis eius obcaecati eveniet, aspernatur incidunt 
-        doloribus repudiandae saepe praesentium nesciunt.
+        <% if (meta.description) {%>
+            <%=meta.description%>
+        <% } %>
     </p>
     <span>            
-        <p>Progresso: 6/15</p>
-        <p>Status: em andamento</p>
+        <p>Progresso: <%=meta.read_books%>/<%=meta.total_books%></p>
+        <% if (meta.read_books >= meta.total_books) { %>
+            <p>Status: concluída</p>
+        <% } else { %>
+            <p>Status: em andamento </p>
+        <% } %>
     </span>
 </article>

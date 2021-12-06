@@ -2,29 +2,30 @@
     <%- include('partes/menuUser')%>  
     <div class="container">
         <header>
-            <h1 class="title">Nome da meta</h1>
-            <h1><a href="/meta/editar">Editar Meta +</a></h1>
+            <h1 class="title"><%=meta.title%></h1>
+            <h1><a href="/meta/<%=meta._id%>">Editar Meta +</a></h1>
         </header>
         <section class="detalhes">
             <span class="description">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    In enim rerum veniam. Harum iste earum nam, animi quis atque, 
-                    debitis eius obcaecati eveniet, aspernatur incidunt 
-                    doloribus repudiandae saepe praesentium nesciunt.
+                    <%=meta.description%>
                 </p>
             </span>
             <span class="meta">
-                <p>Total de livros: 10</p>
-                <p>Total de livros lidos: 5</p>
+                <p>Total de livros: <%=meta.total_books%></p>
+                <p>Total de livros lidos: <%=meta.read_books%></p>
             </span>
             <span class="status">            
-                <p>Status: em andamento</p>
-                <p>Progresso: 20%</p>
+                <% if (meta.read_books >= meta.total_books) { %>
+                    <p>Status: concluída</p>
+                <% } else { %>
+                    <p>Status: em andamento </p>
+                <% } %>
+                <p>Progresso: <%=progress%>%</p>
             </span>
             <span class="prazo">
-                <p>Prazo: 23/05/2022</p>
-                <p><a class="btn" href="/meta/atualizar">Atualizar Meta</a></p>
+                <p>Prazo: <%=deadline%></p>
+                <p><a class="btn" href="/meta/<%=meta._id%>/atualizar">Atualizar Meta</a></p>
             </span>
         </section>
     </div>
