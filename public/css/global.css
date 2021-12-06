@@ -116,7 +116,14 @@ form.login_register{
     display: flex;
     flex-direction: column;
 }
-
+form.login_register p {
+    margin-left: 35px;
+    margin-right: 35px;
+    font-size: 26px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
 form.login_register h2,
 form.login_register input {
     margin-left: 35px;
