@@ -8,8 +8,8 @@ const Meta = require('../models/meta');
 module.exports = {
 
     async listarMetas(req, res) {
-        const meta = await Meta.find({});
-        res.render('meta', {tituloPagina: "Lista de Metas", meta})
+        const metas = await Meta.find({});
+        res.render('meta', {tituloPagina: "Lista de Metas", metas})
     },
 
     async mostrarPaginaDeLogin(req, res) {
@@ -73,26 +73,71 @@ module.exports = {
 
     },
 
+    async mostrarPaginaDetalhesMeta(req, res) {
+        const { id } = req.params;
+        const meta = await Meta.findById(id);
+        let deadline = String(meta.deadline.getDay()).padStart(2, '0') + '/' + String(meta.deadline.getMonth()).padStart(2, '0') + '/' + meta.deadline.getFullYear();
+        console.log(deadline);
+
+        const progress = await (meta.read_books/meta.total_books)*100;
+        res.render('detalhesMeta', {tituloPagina: "Detalhes da Meta", meta, progress, deadline})
+    },
+
 
     async mostrarPaginaDeEdicaoDeMetas(req, res) {
-        res.render('editarMeta', {tituloPagina: "Editar Meta"})
+        const { id } = await req.params;
+        const meta = await Meta.findById(id);
+        let deadline = await meta.deadline.getFullYear() + '-' + String(meta.deadline.getMonth()).padStart(2, '0') + '-' + String(meta.deadline.getDay()).padStart(2,'0');
+        res.render('editarMeta', {tituloPagina: "Editar Meta", id, meta, deadline})
     },
 
     async atualizarDadosDaMeta(req, res) {
-        res.redirect('/');
+
+        const { id } = await req.params;
+
+        const body = await {
+            user: req.session.passport.user,
+            title: req.body.titulo,
+            description: req.body.description,
+            total_books: req.body.total_books,
+            deadline: req.body.prazo,
+        };
+        
+        try {
+            await Meta.findByIdAndUpdate(id, body, { runValidators: true });
+            res.redirect('/');
+        } catch (err) {
+            console.log(err);
+            res.render('editarMeta', {tituloPagina: "Editar Meta", msg: 'Não foi possivel atualizar!'})
+        }
 
     },
 
-    async atualizarMeta (req, res) {
-        res.render('atualizarMeta', {tituloPagina: "Atualizar Leitura"})
+    async atualizarMetaDeLivros (req, res) {
+        const { id } = req.params;
+        res.render('atualizarMeta', {tituloPagina: "Atualizar Leitura", id})
+    },
+
+    async atualizarQtdDeLivrosLidos (req, res) {
+
+        const { id } = await req.params;
+        const {lidos} = await req.body;
+
+        try {
+            await Meta.findByIdAndUpdate(id, {read_books: lidos}, { runValidators: true });
+            res.redirect('/meta/' + id + '/detalhes');
+
+        } catch (err) {
+            console.log(err);
+            res.render('atualizarMeta', {tituloPagina: "Atualizar Leitura"})
+        }
+
     },
 
     async deletarMeta(req, res) {
-        res.redirect('/');
-    },
-
-    async mostrarPaginaDetalhesMeta(req, res) {
-        res.render('detalhesMeta', {tituloPagina: "Detalhes da Meta"})
+        const { id } = await req.params;
+        await Meta.findByIdAndDelete(id);
+        await res.redirect('/');
     },
 
     async logout(req, res) {
