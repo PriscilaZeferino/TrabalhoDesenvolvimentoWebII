@@ -191,7 +191,7 @@ header h1:first-child{
     color: var(--secondary-color);
 }
 
-header h1 {
+header h1, header p {
     font-family: var(--primary-font);
     font-weight: 700;
     font-size: 20px;
@@ -203,6 +203,10 @@ header h1, header h1 a {
     margin: auto;
 }
 
+header form {
+    padding: 20px;
+    margin: auto;
+}
 
 header h1 a {
     color: var(--third-color);
@@ -349,9 +353,13 @@ textarea {
     resize: none;
 }
 
-.registerAndEditMeta {
+.registerAndEditMeta, .delete {
     margin-left: 60px;
     margin-right: 60px;
+}
+
+.delete {
+    text-align: right;
 }
 
 .registerAndEditMeta div input, 
@@ -373,15 +381,11 @@ textarea {
     border: 5px solid var(--third-color);
 }
 
-.total_prazo, .btn-group {
+.total_prazo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
-
-.btn-group {
-    margin-bottom: 40px;
 }
 
 .btn p a, .btn p a:visited{
@@ -400,19 +404,19 @@ textarea {
     padding: 10px;
 }
 
-.btn-group :first-child a{
+.delete p input[type="submit"]{
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: 5px solid var(--secondary-color);
     padding: 10px;
 }
 
-.btn:hover {
+.delete p input[type="submit"]:hover {
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
-.btn-group :first-child a:hover{
+.delete p input[type="submit"]:hover{
     background-color: var(--secondary-color-hover);
     border: 5px solid var(--secondary-color-hover);
 }
