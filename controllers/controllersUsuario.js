@@ -4,6 +4,7 @@ const passport = require("passport");
 const User = require('../models/user');
 const Meta = require('../models/meta');
 
+var moment = require('moment');
 
 module.exports = {
 
@@ -56,7 +57,7 @@ module.exports = {
             title: req.body.titulo,
             description: req.body.description,
             total_books: req.body.total_books,
-            deadline: req.body.prazo,
+            deadline: await moment(req.body.prazo).format('YYYY-MM-DD'),
         };
 
         if(body) {
@@ -76,10 +77,9 @@ module.exports = {
     async mostrarPaginaDetalhesMeta(req, res) {
         const { id } = req.params;
         const meta = await Meta.findById(id);
-        let deadline = String(meta.deadline.getDay()).padStart(2, '0') + '/' + String(meta.deadline.getMonth()).padStart(2, '0') + '/' + meta.deadline.getFullYear();
-        console.log(deadline);
+        let deadline = await moment(meta.deadline).format('DD/MM/YYYY');
 
-        const progress = await (meta.read_books/meta.total_books)*100;
+        const progress = await Math.round((meta.read_books/meta.total_books)*100);
         res.render('detalhesMeta', {tituloPagina: "Detalhes da Meta", meta, progress, deadline})
     },
 
@@ -87,7 +87,7 @@ module.exports = {
     async mostrarPaginaDeEdicaoDeMetas(req, res) {
         const { id } = await req.params;
         const meta = await Meta.findById(id);
-        let deadline = await meta.deadline.getFullYear() + '-' + String(meta.deadline.getMonth()).padStart(2, '0') + '-' + String(meta.deadline.getDay()).padStart(2,'0');
+        let deadline = await moment(meta.deadline).format('YYYY-MM-DD');
         res.render('editarMeta', {tituloPagina: "Editar Meta", id, meta, deadline})
     },
 
@@ -100,7 +100,7 @@ module.exports = {
             title: req.body.titulo,
             description: req.body.description,
             total_books: req.body.total_books,
-            deadline: req.body.prazo,
+            deadline: await moment(req.body.prazo).format('YYYY-MM-DD'),
         };
         
         try {
