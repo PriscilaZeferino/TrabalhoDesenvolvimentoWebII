@@ -6,6 +6,13 @@ const cookieparser = require('cookie-parser')
 const bcrypt = require('bcrypt')
 const mongoose = require('mongoose')
 
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const expressSession = require("express-session");
+const User = require('./models/user');
+
+const flash = require("connect-flash");
+
 const app = express()
 app.use(
     session(
@@ -26,7 +33,17 @@ app.set('views', './views')
 app.use(express.static('public'))
 app.use(cookieparser())
 
-mongoose.connect("mongodb://localhost:27017/dbTrabalho", {useNewUrlParser: true, useUnifiedTopology: true})
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash()); // aplicando o connect-flash na sua aplicacao.
+
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+mongoose.connect("mongodb://localhost:27017/dbTrabWebII", {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {console.log('Conexão estabelecida com o banco!');})
     .catch(err => {console.log("Erro ao conectar com o banco:" + err);
 });
