@@ -68,17 +68,30 @@ nav p {
 nav span a {
     color: var(--primary-color);
     text-decoration: none;
-    border: 5px solid;
-
     padding: 5px 30px 5px 30px;
     margin-right: 10px;
 
     font-family: var(--primary-font);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 nav span a:hover {
+    /* background-color: var(--secondary-color-hover); */
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+nav span a#login {
+    color: var(--primary-color);
+    text-decoration: none;
+    border: 5px solid;
+
+    padding: 5px 30px 5px 30px;
+    margin-right: 10px;
+}
+
+nav span a#login:hover {
     background-color: var(--secondary-color-hover);
     color: var(--primary-color);
 }
@@ -373,6 +386,10 @@ textarea {
     margin-right: 60px;
 }
 
+.back {
+    margin-left: 60px;
+}
+
 .delete {
     text-align: right;
 }
@@ -396,7 +413,7 @@ textarea {
     border: 5px solid var(--third-color);
 }
 
-.total_prazo {
+.total_prazo, .btn-group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -417,6 +434,12 @@ textarea {
     font-weight: 500;
     text-decoration: none;
     padding: 10px;
+    margin: auto;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .delete p input[type="submit"]{

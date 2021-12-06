@@ -54,6 +54,9 @@ mongoose.connect("mongodb://localhost:27017/dbTrabWebII", {useNewUrlParser: true
 const rotasUsuario = require('./routes/routesUsuario')
 app.use(rotasUsuario)
 
+const rotasVisitante = require('./routes/routesVisit')
+app.use(rotasVisitante)
+
 app.get('*', (req, res) => 
 {
     res.statusCode = 404;

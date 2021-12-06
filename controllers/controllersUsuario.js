@@ -1,49 +1,12 @@
-const passport = require("passport");
-
-
-const User = require('../models/user');
 const Meta = require('../models/meta');
-
 var moment = require('moment');
 
 module.exports = {
 
     async listarMetas(req, res) {
-        const metas = await Meta.find({});
+        const username = req.session.passport.user;
+        const metas = await Meta.find({user: username});
         res.render('meta', {tituloPagina: "Lista de Metas", metas})
-    },
-
-    async mostrarPaginaDeLogin(req, res) {
-        res.render('login', {tituloPagina: "Login", msg: ''})
-    },
-
-    async mostrarPaginaDeCadastro(req, res) {
-        res.render('register', {tituloPagina: "Registrar", msg: ''})
-    },
-
-    async salvarDadosDeCadastro(req, res) {  
-
-            const {username, email, password} = req.body;
-            let msg = '';
-
-            if(username && email && password) {
-                Users = await new User({email: email, username: username});
-                await User.register(Users, password, function(err, user) {
-                        if (err) {
-                            msg = 'Este usuário ja está em uso. Tente fazer login!'
-                            res.render('register', {tituloPagina: "Registrar", msg})
-                        }else{
-                            passport.authenticate("local")(req, res, ()=>{
-                                res.redirect("/");
-                            });
-                        }
-                });
-            } else {
-                msg = 'Por favor, preencha todos os campos!'
-                res.render('register', {tituloPagina: "Registrar", msg})
-            }
-
-
     },
 
     async mostrarPaginaDeCadastroDeMetas(req, res) {

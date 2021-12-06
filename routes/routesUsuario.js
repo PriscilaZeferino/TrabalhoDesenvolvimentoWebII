@@ -1,7 +1,6 @@
 const controllersUsuario = require('../controllers/controllersUsuario')
 const express = require('express')
 const router = express.Router()
-const passport = require("passport");
 
 const isLoggedIn = (req, res, next) => {
     if(req.isAuthenticated()){
@@ -10,12 +9,6 @@ const isLoggedIn = (req, res, next) => {
         res.redirect("/login");
     }
 }
-
-router.get('/login', controllersUsuario.mostrarPaginaDeLogin)
-router.post('/login', passport.authenticate("local", {successRedirect: `/`, failureRedirect: "/login"}));
-
-router.get('/register', controllersUsuario.mostrarPaginaDeCadastro)
-router.post('/register', controllersUsuario.salvarDadosDeCadastro)
 
 router.get('/', isLoggedIn, controllersUsuario.listarMetas)
 router.get('/meta/:id/detalhes', isLoggedIn, controllersUsuario.mostrarPaginaDetalhesMeta)
