@@ -31,18 +31,13 @@ mongoose.connect("mongodb://localhost:27017/dbTrabalho", {useNewUrlParser: true,
     .catch(err => {console.log("Erro ao conectar com o banco:" + err);
 });
 
-// const rotasVisitante = require('./routes/routesVisitante')
-// app.use(rotasVisitante)
-
 const rotasUsuario = require('./routes/routesUsuario')
 app.use(rotasUsuario)
 
 app.get('*', (req, res) => 
 {
     res.statusCode = 404;
-    res.write("<p> 404 Not Found </p>");
-    res.write('<p>Clique <a href="/"> aqui </a> para voltar a pagina inicial');
-    res.end();
+    res.render('notFound', {tituloPagina: '404 NOT FOUND'});
 });
 
 app.listen(3000, () => {
