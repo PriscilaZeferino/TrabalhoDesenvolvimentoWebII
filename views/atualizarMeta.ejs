@@ -2,13 +2,13 @@
     <%- include('partes/menuUser')%>  
     <div class="container">
         <header>
-            <h1 class="title">Atualizar meta</h1>
+            <h1 class="title">Atualizar leitura</h1>
         </header>
        <section>
-           <form action="#" method="post" class="registerAndEditMeta">
+           <form action="/meta/<%=id%>/atualizar" method="post" class="registerAndEditMeta">
                 <div>
-                    <label for="total">Livros lidos: </label>
-                    <input type="number" min="1" placeholder="Total de Livros Lidos">
+                    <label for="total">Quantos livros você leu?</label>
+                    <input type="number" name="lidos" min="1" placeholder="Numero de livros lidos">
                 </div>
                 <div class="btn-group">
                     <p><input type="submit" class="btn" value="Atualizar"></p>
