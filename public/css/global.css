@@ -24,6 +24,11 @@
     --secondary-font: 'Jost', sans-serif;
 }
 
+.logo p a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
 body {
     background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),  url('../bookshelf.jpeg');
     background-size: cover;
@@ -182,6 +187,16 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+section {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 header h1:first-child{
