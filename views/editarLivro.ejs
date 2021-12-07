@@ -3,8 +3,10 @@
     <div class="container">
         <header>
             <h1 class="title">Editar Livro</h1>
-            <form class="delete" action="/livro/<%=id%>?_method=DELETE" method="post">
-                <p><input class="btn" name="delete" type="submit" value="Deletar livro"/></p>
+            <form id="delete" class="delete" action="/livro/<%=id%>?_method=DELETE" method="post">
+                <p onclick="confirm('Tem certeza que deseja apagar?') ? document.getElementById('delete').submit() : false" class="btn">
+                    Deletar Meta
+                </p>
             </form>
         </header>
        <section>
