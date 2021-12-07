@@ -6,8 +6,12 @@
             <h1><a href="/meta">Nova Meta +</a></h1>
         </header>
         <section>
-            <% for (meta of metas) { %>
-                <%- include('partes/article_metas')%>  
+            <% if(metas.length > 0) { %>
+                <% for (meta of metas) { %>
+                    <%- include('partes/article_metas')%>  
+                <% } %>
+            <% } else { %>
+                    <p class="vazio">Nenhuma meta cadastrada</p>
             <% } %>
         </section>
     </div>

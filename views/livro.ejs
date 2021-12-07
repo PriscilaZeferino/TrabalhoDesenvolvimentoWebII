@@ -6,8 +6,12 @@
             <h1><a href="/livro/cadastrar">Novo Livro +</a></h1>
         </header>
         <section>
-            <% for (livro of livros) { %>
-                <%- include('partes/article_livros')%>  
+            <% if(livros.length > 0) { %>
+                <% for (livro of livros) { %>
+                    <%- include('partes/article_livros')%>  
+                <% } %>
+            <% } else { %>
+                    <p class="vazio">Nenhum livro cadastrado</p>
             <% } %>
         </section>
     </div>
